@@ -12,10 +12,6 @@ plugins {
     id 'war'
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.10.2'
-}
-
 apply plugin: 'gwt'
 
 def gwtVersionNum = "2.8.2"
@@ -41,6 +37,9 @@ sourceSets {
 
 gwt {
     gwtVersion=gwtVersionNum
+    minHeapSize = '512M'
+    maxHeapSize = '1024M'
+    compiler.localWorkers = 8
     modules 'com.zenhog.mygwtproject.GwtWeb'
 }
 
